@@ -78,11 +78,14 @@ This is an academic project intended for learning and experimentation only. The 
 
 This project is the result of a collaborative academic effort aimed at applying real-world machine learning techniques to improve road safety through predictive analytics. It brings together data science principles, web development skills, and visualization tools into a single, deployable application.
 
+ ---
+ 
 The team has collectively worked on:
      * Data Analysis – exploring and preprocessing traffic accident data.
      * Model Building – training and evaluating a machine learning model.
      * Web Development – designing and integrating a user-friendly Flask interface.
      * Visualization – creating dashboards for insights using Power BI.
      
-
+ ---
+ 
 We hope this solution inspires others to use technology for public safety initiatives. We welcome contributions from the community! If you have ideas to improve the model, enhance the web interface, or extend dashboard capabilities, feel free to Fork this repository or open a Pull Request. 
