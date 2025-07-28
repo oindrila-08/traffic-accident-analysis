@@ -76,7 +76,7 @@ This is an academic project intended for learning and experimentation only. The 
 
  ---
 
-#  This project is the result of a collaborative academic effort aimed at applying real-world machine learning techniques to improve road safety through predictive analytics. It brings together data science principles, web development skills, and visualization tools into a single, deployable application.
+This project is the result of a collaborative academic effort aimed at applying real-world machine learning techniques to improve road safety through predictive analytics. It brings together data science principles, web development skills, and visualization tools into a single, deployable application.
 
 The team has collectively worked on:
      * Data Analysis – exploring and preprocessing traffic accident data.
