@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Traffic Accident Severity Predictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">🚦 Traffic Insight Pro</div>
+        <nav>
+            <a href="#dashboard-section" class="nav-link">Dashboard</a>
+            <a href="#predictor-section" class="nav-link">Predict</a>
+            <a href="#about-section" class="nav-link">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="dashboard-section" id="dashboard-section">
+            <h2>Traffic Accident Dashboard</h2>
+            <div class="dashboard-image-container">
+                <a href="/static/Traffic Accident Analysis.pbix" target="_blank" download>
+                    <img src="/static/powerbi_dashboard.jpg" alt="Power BI Dashboard" class="dashboard-image" />
+                </a>
+                <p class="dashboard-caption">Click the image to open the interactive Power BI dashboard (.pbix file)</p>
+            </div>
+        </section>
+
+        <section class="predictor-section" id="predictor-section">
+            <h2>Predict Accident Severity</h2>
+            <form id="predict-form" autocomplete="off">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="Weather">Weather</label>
+                        <select id="Weather" name="Weather">
+                            {% for val in dropdowns['Weather'] %}
+                            <option value="{{val}}">{{val}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Road_Type">Road Type</label>
+                        <select id="Road_Type" name="Road_Type">
+                            {% for val in dropdowns['Road_Type'] %}
+                            <option value="{{val}}">{{val}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Time_of_Day">Time of Day</label>
+                        <select id="Time_of_Day" name="Time_of_Day">
+                            {% for val in dropdowns['Time_of_Day'] %}
+                            <option value="{{val}}">{{val}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Traffic_Density">Traffic Density</label>
+                        <select id="Traffic_Density" name="Traffic_Density">
+                            {% for val in dropdowns['Traffic_Density'] %}
+                            <option value="{{val}}">{{val}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="Speed_Limit">Speed Limit (km/h)</label>
+                        <input type="number" id="Speed_Limit" name="Speed_Limit" min="0" max="300" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Number_of_Vehicles">Number of Vehicles</label>
+                        <input type="number" id="Number_of_Vehicles" name="Number_of_Vehicles" min="1" max="20" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Driver_Alcohol">Driver Alcohol (Yes=1, No=0)</label>
+                        <select id="Driver_Alcohol" name="Driver_Alcohol">
+                            <option value="0.0">No</option>
+                            <option value="1.0">Yes</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Road_Condition">Road Condition</label>
+                        <select id="Road_Condition" name="Road_Condition">
+                            {% for val in dropdowns['Road_Condition'] %}
+                            <option value="{{val}}">{{val}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="Vehicle_Type">Vehicle Type</label>
+                        <select id="Vehicle_Type" name="Vehicle_Type">
+                            {% for val in dropdowns['Vehicle_Type'] %}
+                            <option value="{{val}}">{{val}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Driver_Age">Driver Age</label>
+                        <input type="number" id="Driver_Age" name="Driver_Age" min="16" max="100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Driver_Experience">Driver Experience (years)</label>
+                        <input type="number" id="Driver_Experience" name="Driver_Experience" min="0" max="80" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Road_Light_Condition">Road Light Condition</label>
+                        <select id="Road_Light_Condition" name="Road_Light_Condition">
+                            {% for val in dropdowns['Road_Light_Condition'] %}
+                            <option value="{{val}}">{{val}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="predict-btn">Predict</button>
+            </form>
+            <div id="prediction-result" class="result-box"></div>
+        </section>
+
+        <section class="about-section" id="about-section">
+            <h2>About</h2>
+            <div class="about-content">
+                <p><strong>Programme Name:</strong> B. Tech in CSE - DS</p>
+                <p><strong>Course Code:</strong> PROJ-CSD681</p>
+                <p><strong>Course Name:</strong> Technical Seminar with Modern Tool Application</p>
+                <p><strong>Prepared by:</strong></p>
+                <ul>
+                    <li>Abhraneel Bose (BWU/BTD/22/342)</li>
+                    <li>Harsha Nandi (BWU/BTD/22/001)</li>
+                    <li>Oindrila Khawas (BWU/BTD/22/003)</li>
+                    <li>Himani Das Talukder  (BWU/BTD/22/047)</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2025 Traffic Insight Pro. All rights reserved.
+    </footer>
+    
+    <!-- Prediction Result Modal -->
+    <div id="result-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <h3>   Prediction Result</h3>
+            <ul id="input-params-list"></ul>
+            <div id="modal-prediction-output"></div>
+        </div>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html>
